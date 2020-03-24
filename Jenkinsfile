@@ -10,9 +10,9 @@ pipeline {
         }
     }
 }
-        stage('Build Docker Image') {
-            when {
-                branch 'master'
+     stage('Build Docker Image') {
+         when {
+               branch 'master'
             }
             steps {
                 script {
@@ -20,7 +20,9 @@ pipeline {
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
-                }                   
+                }
+            }
+        }
         stage('Push Docker Image') {
             when {
                 branch 'master'
@@ -32,5 +34,5 @@ pipeline {
                         app.push("latest")
                     }
                 }
-   
-          
+            }
+        }
